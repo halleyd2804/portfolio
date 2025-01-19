@@ -1,113 +1,124 @@
 import Image from "next/image";
+import {
+  Link,
+  Element,
+  Events,
+  animateScroll,
+  scrollSpy,
+  scroller
+} from "react-scroll";
+import React from "react";
+import { FaLinkedin, FaGithub, FaEnvelope, FaFileDownload } from "react-icons/fa";
 
-export default function Home() {
+
+function LandingSection() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
+    <section className="landing-section bg-white text-black lg:p-8 w-auto p-8">
+      <div className="intro text-center flex items-center flex-col">
+        <h1 className="text-4xl font-bold mb-4">{"I'm Steven Bui"}</h1>
+        <p className="mb-8">Welcome to my portfolio. Connect with me through the links below.</p>
+        <div className="quick-links grid justify-center auto-cols-max md:w-full grid-flow-row w-4/5">
+          <a href="/path/to/resume.pdf" download className="btn bg-blue-500 text-white py-2 px-4 rounded-full flex justify-center gap-2 items-center w-full m-2 md:m-4">
+            <FaFileDownload className="" /> Download Resume
+          </a>
+          <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noopener noreferrer" className="btn w-full bg-blue-700 text-white py-2 px-4 m-2 md:m-4 rounded-full flex justify-center gap-2 items-center">
+            <FaLinkedin className="" /> LinkedIn
+          </a>
+          <a href="https://github.com/your-github" target="_blank" rel="noopener noreferrer" className="btn w-full bg-gray-800 text-white py-2 px-4 m-2 md:m-4 rounded-full flex justify-center gap-2 items-center">
+            <FaGithub className="" /> GitHub
+          </a>
+          <a href="mailto:your-email@example.com" className="btn bg-red-500 text-white py-2 px-4 m-2 md:m-4 rounded-full flex justify-center gap-2 items-center w-full">
+            <FaEnvelope className="" /> Email
           </a>
         </div>
       </div>
+    </section>
+  );
+}
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+function ProjectSection(props: any) {
+  const projects = [
+    {
+      title: "Project 1",
+      image: "/path/to/image1.jpg",
+      description: "Description of project 1.",
+      technologies: ["React", "TailwindCSS", "Node.js"],
+      link: "/projects/project-1"
+    },
+    {
+      title: "Project 2",
+      image: "/path/to/image2.jpg",
+      description: "Description of project 2.",
+      technologies: ["Vue", "Vuetify", "Firebase"],
+      link: "/projects/project-2"
+    },
+    {
+      title: "Project 3",
+      image: "/path/to/image3.jpg",
+      description: "Description of project 3.",
+      technologies: ["Angular", "Bootstrap", "Express"],
+      link: "/projects/project-3"
+    }
+  ];
+
+  return (
+    <section className="project-section bg-gray-100 py-12 h-100vh">
+      <div className="container mx-auto text-center">
+        <h1 className="text-5xl font-bold mb-16">
+          <a href="/projects" className="hover:underline">Have a look at my projects</a>
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+            <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden md:m-4 m-4 transform transition duration-500 hover:scale-105">
+              <Image src={project.image} alt={project.title} width={100} height={100} className="w-full h-48 object-cover" />
+              <div className="p-6">
+                <h2 className="text-2xl font-bold mb-2">{project.title}</h2>
+                <p className="text-gray-700 mb-4">{project.description}</p>
+                <div className="flex flex-wrap justify-center gap-2 mb-4">
+                  {project.technologies.map((tech, index) => (
+                    <span key={index} className="bg-blue-200 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">{tech}</span>
+                  ))}
+                </div>
+                <a href={project.link} className="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">Learn More</a>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
+    </section>
+  );
+}
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+function Footer() {
+  return (
+    <footer className="bg-gray-800 text-white py-8">
+      <div className="container mx-auto text-center">
+        <h2 className="text-3xl font-bold mb-4">Stay in Touch</h2>
+        <form className="flex flex-col items-center">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="w-full max-w-md p-2 mb-4 rounded-md text-black"
+          />
+          <button
+            type="submit"
+            className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600"
+          >
+            Submit
+          </button>
+        </form>
       </div>
+    </footer>
+  );
+}
+export default function Home() {
+  // @ts-ignore
+  return (
+    <main className="flex min-h-screen flex-col justify-between">
+      
+      <LandingSection/>
+      <ProjectSection/>
+      <Footer/>
     </main>
   );
 }

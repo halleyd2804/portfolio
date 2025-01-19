@@ -1,0 +1,1 @@
+export const LOGO_DIR = "/logo.png"
