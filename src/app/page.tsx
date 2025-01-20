@@ -7,6 +7,15 @@ import {
   scrollSpy,
   scroller
 } from "react-scroll";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+
 import React from "react";
 import { FaLinkedin, FaGithub, FaEnvelope, FaFileDownload } from "react-icons/fa";
 
@@ -16,18 +25,18 @@ function LandingSection() {
     <section className="landing-section bg-white text-black lg:p-8 w-auto p-8">
       <div className="intro text-center flex items-center flex-col">
         <h1 className="text-4xl font-bold mb-4">{"I'm Steven Bui"}</h1>
-        <p className="mb-8">Welcome to my portfolio. Connect with me through the links below.</p>
-        <div className="quick-links grid justify-center auto-cols-max md:w-full grid-flow-row w-4/5">
-          <a href="/path/to/resume.pdf" download className="btn bg-blue-500 text-white py-2 px-4 rounded-full flex justify-center gap-2 items-center w-full m-2 md:m-4">
+        <p className="mb-8">I am a 3rd year student @ The University of Melbourne, a full-stack web developer. I am also a low-level programming, AI Enthusiast</p>
+        <div className="quick-links grid md:flex justify-center md:auto-cols-max md:w-full grid-flow-row w-4/5">
+          <a href="/path/to/resume.pdf" download className="btn bg-blue-500 text-white py-2 px-4 rounded-full flex justify-center gap-2 items-center w-full md:w-auto m-2 md:m-4">
             <FaFileDownload className="" /> Download Resume
           </a>
-          <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noopener noreferrer" className="btn w-full bg-blue-700 text-white py-2 px-4 m-2 md:m-4 rounded-full flex justify-center gap-2 items-center">
+          <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noopener noreferrer" className="btn w-full md:w-auto bg-blue-700 text-white py-2 px-4 m-2 md:m-4 rounded-full flex justify-center gap-2 items-center">
             <FaLinkedin className="" /> LinkedIn
           </a>
-          <a href="https://github.com/your-github" target="_blank" rel="noopener noreferrer" className="btn w-full bg-gray-800 text-white py-2 px-4 m-2 md:m-4 rounded-full flex justify-center gap-2 items-center">
+          <a href="https://github.com/your-github" target="_blank" rel="noopener noreferrer" className="btn w-full md:w-auto bg-gray-800 text-white py-2 px-4 m-2 md:m-4 rounded-full flex justify-center gap-2 items-center">
             <FaGithub className="" /> GitHub
           </a>
-          <a href="mailto:your-email@example.com" className="btn bg-red-500 text-white py-2 px-4 m-2 md:m-4 rounded-full flex justify-center gap-2 items-center w-full">
+          <a href="mailto:your-email@example.com" className="btn bg-red-500 md:w-auto text-white py-2 px-4 m-2 md:m-4 rounded-full flex justify-center gap-2 items-center w-full">
             <FaEnvelope className="" /> Email
           </a>
         </div>
@@ -39,25 +48,25 @@ function LandingSection() {
 function ProjectSection(props: any) {
   const projects = [
     {
-      title: "Project 1",
-      image: "/path/to/image1.jpg",
-      description: "Description of project 1.",
-      technologies: ["React", "TailwindCSS", "Node.js"],
-      link: "/projects/project-1"
+      title: "Books Store Collaborative Recommender System",
+      image: "https://booknet.com.au/wp-content/uploads/2020/05/5-Advantages-of-an-Online-Bookshop.jpg",
+      description: "A recommendation system using Collaborative Filtering with Matrix Factorization.",
+      technologies: ["Python", "Pandas", "Scikit-Learn"],
+      link: "/projects/1"
     },
     {
-      title: "Project 2",
-      image: "/path/to/image2.jpg",
-      description: "Description of project 2.",
-      technologies: ["Vue", "Vuetify", "Firebase"],
-      link: "/projects/project-2"
+      title: "Meetix – A Friend-Making Website Through Events ",
+      image: "/ProjectAssets/MeetixLandingPage.png",
+      description: "A platform for event ticketing and attendee matchmaking powered by AI",
+      technologies: ["NextJS", "React", "Firebase"],
+      link: "/projects/2"
     },
     {
-      title: "Project 3",
-      image: "/path/to/image3.jpg",
-      description: "Description of project 3.",
-      technologies: ["Angular", "Bootstrap", "Express"],
-      link: "/projects/project-3"
+      title: "Medical Pantry - Image Recognizer & Inventory Manager for Medical Products",
+      image: "/ProjectAssets/MedicalPantry.png",
+      description: "A mobile webapp to manage medical supplies and recognize products using image recognition",
+      technologies: ["NextJS", "React", "Firebase"],
+      link: "/projects/3"
     }
   ];
 
@@ -69,19 +78,30 @@ function ProjectSection(props: any) {
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden md:m-4 m-4 transform transition duration-500 hover:scale-105">
+            <Card key={index} className="bg-white rounded-lg shadow-lg overflow-hidden md:m-4 m-4 transform transition duration-500 hover:scale-105">
+              <CardHeader>
+                
               <Image src={project.image} alt={project.title} width={100} height={100} className="w-full h-48 object-cover" />
-              <div className="p-6">
-                <h2 className="text-2xl font-bold mb-2">{project.title}</h2>
-                <p className="text-gray-700 mb-4">{project.description}</p>
-                <div className="flex flex-wrap justify-center gap-2 mb-4">
-                  {project.technologies.map((tech, index) => (
-                    <span key={index} className="bg-blue-200 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">{tech}</span>
-                  ))}
+              </CardHeader>
+              
+              <CardContent className="w-full">
+                
+                <CardTitle className="mt-4 text-xl w-full">{project.title}</CardTitle>
+                <CardDescription className="w-full">{project.description}</CardDescription>
+                <div className="flex flex-col justify-center">
+                  <div className="flex flex-row justify-center gap-2 my-4">
+                      {project.technologies.map((tech, index) => (
+                      <span key={index} className="bg-blue-200 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded h-fit">{tech}</span>
+                    ))}
+                  </div>
+                  
+                  
                 </div>
-                <a href={project.link} className="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">Learn More</a>
-              </div>
-            </div>
+                <CardFooter className="flex justify-center w-full">
+                  <a href={project.link} className="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">Learn More</a>
+                </CardFooter>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>

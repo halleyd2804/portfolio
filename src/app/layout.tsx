@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import {Layout} from 'antd'
-import {Header, Content} from "antd/es/layout/layout";
 import NavBar from '@/components/NavBar'
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,15 +16,15 @@ export default function RootLayout({
 }>) {
   return (
       <html lang="en">
-      <body className={inter.className}>
-      <Layout>
-        <Header className={"flex flex-row justify-center"}>
+      <body className={inter.className + " flex flex-col"}>
+      
+        <header className={"flex flex-row justify-center mb-5 h-content min-h-[48px]"}>
           <NavBar/>
-        </Header>
-        <Content>
-          {children}
-      </Content>
-      </Layout>
+        </header>
+        <div className={"relative"}>
+        {children}
+        </div>
+        
       </body>
 
 </html>
