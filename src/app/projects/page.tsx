@@ -1,67 +1,146 @@
-"use client";
-import React, { useState } from "react";
-import { Select } from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import Image from "next/image";
-import "tailwindcss/tailwind.css";
+'use client';
+import React, { useState } from 'react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Input } from '@/components/ui/input';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import Image from 'next/image';
+import 'tailwindcss/tailwind.css';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { DiGithubBadge } from 'react-icons/di';
 
-import {
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-  SelectLabel,
-} from "@/components/ui/select";
-
-const Modal = () => {
-  return (
-    <div>hah</div>
-  )
+interface IModalProps {
+  project: IProjectCardProps;
+  children?: React.ReactNode;
 }
+
+const Modal = ({ project, children }: IModalProps) => {
+  return (
+    <Dialog>
+      <DialogTrigger>
+        <ProjectCard {...project} />
+      </DialogTrigger>
+      <DialogContent className={'bg-primary'}>{children}</DialogContent>
+    </Dialog>
+  );
+};
+
+interface IProjectCardProps {
+  image: string;
+  title: string;
+  description: string;
+  technologies: string[];
+}
+
+const ProjectCard = ({ image, title, description, technologies }: IProjectCardProps) => {
+  return (
+    <Card className="bg-nav-primary border-none text-center rounded-lg shadow-lg overflow-hidden md:m-4 m-4 transform transition duration-500 hover:scale-105">
+      <CardHeader>
+        <Image src={image} alt={title} width={100} height={100} className="w-full h-48 object-cover" />
+      </CardHeader>
+
+      <CardContent className="w-full">
+        <CardTitle className="mt-4 text-xl w-full">{title}</CardTitle>
+        <CardDescription className="w-full">{description}</CardDescription>
+        <div className="flex flex-col justify-center">
+          <div className="flex flex-row justify-center gap-2 my-4">
+            {technologies.map((tech, index) => (
+              <span
+                key={index}
+                className="bg-blue-200 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded h-fit min-h-fit"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
 const projectsData = [
   {
-    title: "Books Store Collaborative Recommender System",
-    image:
-      "https://booknet.com.au/wp-content/uploads/2020/05/5-Advantages-of-an-Online-Bookshop.jpg",
-    description:
-      "A recommendation system using Collaborative Filtering with Matrix Factorization.",
-    technologies: ["Python", "Pandas", "Scikit-Learn"],
-    link: "/projects/1",
+    title: 'Books Store Collaborative Recommender System',
+    image: 'https://booknet.com.au/wp-content/uploads/2020/05/5-Advantages-of-an-Online-Bookshop.jpg',
+    description: 'A recommendation system using Collaborative Filtering with Matrix Factorization.',
+    technologies: ['Python', 'Pandas', 'Scikit-Learn'],
+    link: '/projects/1',
+    detailedDescription: (
+      <div>
+        <Button className={`flex justify-center items-center gap-1`}>
+          <DiGithubBadge />
+          <span>Access GitHub</span>
+        </Button>
+        <ul className="detailedDescription flex flex-col justify-center gap-2 mx-auto">
+          <li>Developed a recommendation system using Collaborative Filtering with Matrix Factorization.</li>
+          <li>
+            Utilized SciKit, Pandas, and Python for data cleaning and visualization, achieving a 75% accuracy rate.
+          </li>
+        </ul>
+      </div>
+    ),
   },
   {
-    title: "Meetix – A Friend-Making Website Through Events ",
-    image: "/ProjectAssets/MeetixLandingPage.png",
-    description:
-      "A platform for event ticketing and attendee matchmaking powered by AI",
-    technologies: ["NextJS", "React", "Firebase"],
-    link: "/projects/2",
+    title: 'Meetix – A Friend-Making Website Through Events ',
+    image: '/ProjectAssets/MeetixLandingPage.png',
+    description: 'A platform for event ticketing and attendee matchmaking powered by AI',
+    technologies: ['NextJS', 'React', 'Firebase'],
+    link: '/projects/2',
+    detailedDescription: (
+      <div>
+        <div className="quicklinks flex w-full items-center gap-2 justify-center">
+          <Button className={`flex justify-center items-center gap-1 bg-nav-primary `}>
+            <DiGithubBadge className={'text-primary'} />
+            <span className={'text-primary'}>Access GitHub</span>
+          </Button>
+          <Button className={`flex justify-center items-center gap-1`}>
+            <DiGithubBadge />
+            <span>Access Production Webpage</span>
+          </Button>
+        </div>
+
+        <ul className="detailedDescription flex flex-col justify-center gap-2 mx-auto list-disc">
+          <li>
+            {' '}
+            Built a platform for event ticketing and attendee matchmaking using Firebase Firestore for real-time data
+            management.
+          </li>
+          <li>
+            {' '}
+            Implemented a matchmaking algorithm and integrated real-time messaging to connect users with similar
+            interests.
+          </li>
+          <li>
+            {' '}
+            Developed a responsive, user-friendly interface with Next.js, React, and TailwindCSS for a seamless user
+            experience.
+          </li>
+        </ul>
+      </div>
+    ),
   },
   {
-    title:
-      "Medical Pantry - Image Recognizer & Inventory Manager for Medical Products",
-    image: "/ProjectAssets/MedicalPantry.png",
-    description:
-      "A mobile webapp to manage medical supplies and recognize products using image recognition",
-    technologies: ["NextJS", "React", "Firebase"],
-    link: "/projects/3",
+    title: 'Medical Pantry - Image Recognizer & Inventory Manager for Medical Products',
+    image: '/ProjectAssets/MedicalPantry.png',
+    description: 'A mobile webapp to manage medical supplies and recognize products using image recognition',
+    technologies: ['NextJS', 'React', 'Firebase'],
+    link: '/projects/3',
+    detailedDescription: (
+      <ul className="detailedDescription flex flex-col justify-center gap-2 mx-auto list-disc">
+        <li> Managed the project using the AGILE methodology, increasing productivity by 75%.</li>
+        <li> Built a responsive interface with Next.js, React, and TailwindCSS.</li>
+        <li> Integrated OpenAI API for image recognition, achieving 80% accuracy in categorizing medical products.</li>
+        <li> Utilized Firebase Firestore for efficient NoSQL data management and scaling</li>
+      </ul>
+    ),
   },
 ];
 
 const ProjectsPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const handleCategoryChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
+  const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCategory(event.target.value);
   };
 
@@ -70,7 +149,7 @@ const ProjectsPage = () => {
   };
 
   return (
-    <div className="p-4 bg-white h-screen">
+    <div className="p-4 h-screen">
       <h1 className="text-5xl font-bold mb-4 text-center">My Projects</h1>
       <div className="flex flex-col md:flex-row md:items-center md:justify-between m-4 gap-4">
         <Input
@@ -87,50 +166,16 @@ const ProjectsPage = () => {
           <SelectContent>
             <SelectItem value="All categories">All Categories</SelectItem>
             <SelectItem value="Web Development">Web Development</SelectItem>
-            <SelectItem value="Mobile Development">
-              Mobile Development
-            </SelectItem>
+            <SelectItem value="Mobile Development">Mobile Development</SelectItem>
             <SelectItem value="Data Science">Data Science</SelectItem>
           </SelectContent>
         </Select>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {projectsData.map((project, index) => (
-          <Card
-            key={index}
-            className="bg-white text-center rounded-lg shadow-lg overflow-hidden md:m-4 m-4 transform transition duration-500 hover:scale-105"
-          >
-            <CardHeader>
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={100}
-                height={100}
-                className="w-full h-48 object-cover"
-              />
-            </CardHeader>
-
-            <CardContent className="w-full">
-              <CardTitle className="mt-4 text-xl w-full">
-                {project.title}
-              </CardTitle>
-              <CardDescription className="w-full">
-                {project.description}
-              </CardDescription>
-              <div className="flex flex-col justify-center">
-                <div className="flex flex-row justify-center gap-2 my-4">
-                  {project.technologies.map((tech, index) => (
-                    <span
-                      key={index}
-                      className="bg-blue-200 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded h-fit min-h-fit"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          <Modal project={project} key={index}>
+            {project.detailedDescription}
+          </Modal>
         ))}
       </div>
     </div>
