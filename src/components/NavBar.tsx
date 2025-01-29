@@ -17,16 +17,8 @@ const links: Array<LinkType> = [
     link: "/"
   },
   {
-    name: "About",
-    link: "#"
-  },
-  {
     name: "Projects",
     link: "/projects"
-  },
-  {
-    name: "Contact",
-    link: "#"
   },
 ]
 export default function NavBar(props: React.PropsWithChildren) {
@@ -42,20 +34,20 @@ export default function NavBar(props: React.PropsWithChildren) {
             <div className={"flex flex-row justify-center items-center"}>
               {/*Normal Hyper Links*/}
               <nav className="hidden md:flex gap-4">
-                {links.map((link: LinkType) => (
+                {links.map((link: LinkType, index) => (
                     <Link
                         href={link.link}
                         className="font-medium flex items-center text-sm transition-colors hover:underline"
                         prefetch={false}
-                        key={link.link}
+                        key={link.link + index}
                     >
                       {link.name}
                     </Link>
                 ))}
               </nav>
-              <nav className={"visible px-2"}>
-                <Button onClick={() => (theme == "dark" ? setTheme("light") : setTheme("dark"))}>
-                  <CiDark/>
+              <nav className={"visible px-2 "}>
+                <Button className={"hoverable-button"} onClick={() => (theme == "dark" ? setTheme("light") : setTheme("dark"))}>
+                  <CiDark className={"text-inherit"}/>
                 </Button>
               </nav>
               {/*Hamburger Menu*/}

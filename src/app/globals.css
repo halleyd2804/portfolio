@@ -11,14 +11,17 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: rgb(30 41 59);
+    --background-end-rgb: rgb(30 41 59);
   }
 }
 
 body {
+  @apply bg-primary;
 }
-
+.hoverable-button {
+  @apply dark:text-white dark:hover:text-black text-black hover:text-white
+}
 .bg-primary {
   @apply bg-white dark:bg-slate-800;
 }
@@ -26,7 +29,7 @@ body {
   @apply text-black dark:text-white;
 }
 .bg-nav-primary {
-  @apply bg-white  dark:bg-slate-900;
+  @apply bg-white dark:bg-slate-900;
 }
 @layer utilities {
   .text-balance {
