@@ -56,21 +56,21 @@ function ProjectSection(props: any) {
       image: 'https://booknet.com.au/wp-content/uploads/2020/05/5-Advantages-of-an-Online-Bookshop.jpg',
       description: 'A recommendation system using Collaborative Filtering with Matrix Factorization.',
       technologies: ['Python', 'Pandas', 'Scikit-Learn'],
-      link: '/projects/1',
+      link: '/projects',
     },
     {
       title: 'Meetix – A Friend-Making Website Through Events ',
       image: '/ProjectAssets/MeetixLandingPage.png',
       description: 'A platform for event ticketing and attendee matchmaking powered by AI',
       technologies: ['NextJS', 'React', 'Firebase'],
-      link: '/projects/2',
+      link: '/projects',
     },
     {
       title: 'Medical Pantry - Image Recognizer & Inventory Manager for Medical Products',
       image: '/ProjectAssets/MedicalPantry.png',
       description: 'A mobile webapp to manage medical supplies and recognize products using image recognition',
       technologies: ['NextJS', 'React', 'Firebase'],
-      link: '/projects/3',
+      link: '/projects',
     },
   ];
 
