@@ -1,39 +1,21 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark, cupcake, dracula;
+  root: ":root";
+  logs: true;
+}
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-start-rgb: rgb(255, 255, 225);
+  --background-end-rgb: rgb(255, 255, 255);
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: no-preference) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: rgb(30 41 59);
     --background-end-rgb: rgb(30 41 59);
-  }
-}
-
-body {
-  @apply bg-primary;
-}
-.hoverable-button {
-  @apply dark:text-white dark:hover:text-black text-black hover:text-white
-}
-.bg-primary {
-  @apply bg-white dark:bg-slate-800;
-}
-.text-primary {
-  @apply text-black dark:text-white;
-}
-.bg-nav-primary {
-  @apply bg-white dark:bg-slate-900;
-}
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
   }
 }
 
@@ -94,10 +76,8 @@ body {
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+}
+
+.main-content {
+  margin: 0 8rem 0 8rem;
 }
