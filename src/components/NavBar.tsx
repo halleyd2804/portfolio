@@ -1,6 +1,8 @@
 "use client";
-import React, {ReactNode, useContext} from "react";
+import React, {useState} from "react";
 import {LucideMenu, Moon} from "lucide-react";
+import {useTheme} from "next-themes";
+import Link from "next/link";
 
 type LinkType = {
   name: string,
@@ -16,9 +18,10 @@ const links: Array<LinkType> = [
     link: "/projects"
   },
 ]
-export default function NavBar(props: React.PropsWithChildren) {
+export default function NavBar(props: React.PropsWithChildren, ) {
+  const {theme, setTheme} = useTheme();
   return (
-      <div className="navbar shadow-sm w-3xl max-w-full mt-10 sticky top-0 rounded backdrop-blur z-1000">
+      <div className="navbar shadow-sm w-3xl max-w-full md:mt-10 mt-0 sticky top-0 rounded bg-base-200 z-1000">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -32,9 +35,9 @@ export default function NavBar(props: React.PropsWithChildren) {
               ))}
             </ul>
           </div>
-          <h4>Steven Bui</h4>
+          <Link href={"/"}><h4>Steven Bui</h4></Link>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center hidden md:flex">
           <ul className="menu menu-horizontal px-1">
             {links.map((link, index) => (
                 <li key={index}><a href={link.link}>{link.name}</a></li>
@@ -44,7 +47,9 @@ export default function NavBar(props: React.PropsWithChildren) {
         <div className="navbar-end">
           <label className="swap swap-rotate">
           {/* this hidden checkbox controls the state */}
-          <input type="checkbox" className="theme-controller" value="synthwave"/>
+          <input type="checkbox" className={"theme-controller"} value={"dark"} onChange={e =>
+            e.target.checked ? setTheme("dark") : setTheme("cupcake")
+          }/>
 
           {/* sun icon */}
           <svg

@@ -11,6 +11,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import Link from "next/link";
+import {ThemeProvider} from "@/context/ThemeContext";
 
 function LandingSection() {
   return (
@@ -20,10 +22,10 @@ function LandingSection() {
           <h1 className={"mb-3"}>Steven Bui</h1>
         </div>
         <div className="flex flex-row flex-start gap-3 w-full">
-          <button className="btn btn-soft mx-1">Resume <DownloadIcon/></button>
-          <button className="btn btn-soft mx-1"><FaGithub/></button>
-          <button className="btn btn-soft mx-1"><FaLinkedin/></button>
-          <button className="btn btn-soft mx-1"><FaEnvelope/></button>
+          <a href={"/ProjectAssets/DucBui_Resume.pdf"} className="btn btn-soft mx-1">Resume <DownloadIcon/></a>
+          <a href={"https://github.com/buianhduc"} className="btn btn-soft mx-1"><FaGithub/></a>
+          <a href={"https://www.linkedin.com/in/stevenbui4/"} className="btn btn-soft mx-1"><FaLinkedin/></a>
+          <a href={"mailto://steven.bui0810@gmail.com"} className="btn btn-soft mx-1"><FaEnvelope/></a>
         </div>
       </section>
   );
@@ -103,7 +105,7 @@ function ProjectOverview() {
     return (
         <div className={"project-content grid grid-cols-1 md:grid-cols-2 gap-8"}>
           {Projects.map((project) => (
-              <div className="card bg-base-100 w-82 max-w-full shadow-sm card-border prose prose-headings:my-3" key={project.id}>
+              <Link  href={`/projects/#${project.id}`} className="no-underline card bg-base-100 w-82 max-w-full shadow-sm card-border prose prose-headings:my-3" key={project.id}>
                 <Carousel className={"w-full p-0 m-0"}>
                   <CarouselContent>
                     {project.thumbnail.map((pic, index) => (
@@ -111,7 +113,7 @@ function ProjectOverview() {
                           <Image
                               src={pic}
                               alt="Thumbnail"
-                              className="rounded-xl mt-0 mb-0"
+                              className="rounded-xl mt-0 mb-0 object-cover object-top h-[150px]"
                               width={400}
                               height={200}/>
                         </CarouselItem>
@@ -141,7 +143,7 @@ function ProjectOverview() {
 
                     </div>
                   </div>
-              </div>
+              </Link>
 
             ))
           }
@@ -149,7 +151,7 @@ function ProjectOverview() {
     )
   }
   return (
-    <section>
+    <section className={"f"}>
       <h1>Featured Projects</h1>
       {renderProjects()}
     </section>
@@ -173,14 +175,16 @@ function ProjectOverview() {
 
 export default function Home() {
   return (
-      <main className="flex min-h-screen flex-col justify-between md:mx-5 mx-10 prose">
-        <LandingSection/>
-        <div className="divider"></div>
-        <Education></Education>
-        <div className={"divider"}/>
-        <Experience/>
-        <div className="divider"></div>
-        <ProjectOverview/>
-      </main>
+
+        <main className="flex min-h-screen flex-col justify-between md:mx-5 mx-10 prose">
+          <LandingSection/>
+          <div className="divider"></div>
+          <Education></Education>
+          <div className={"divider"}/>
+          <Experience/>
+          <div className="divider"></div>
+          <ProjectOverview/>
+        </main>
+
   );
 }

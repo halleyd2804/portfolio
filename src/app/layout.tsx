@@ -3,6 +3,7 @@ import {Inter} from 'next/font/google';
 import './globals.css';
 import NavBar from '@/components/NavBar';
 import React from 'react';
+import {ThemeProvider} from "next-themes";
 
 const inter = Inter({subsets: ['latin']});
 
@@ -17,20 +18,23 @@ export default function RootLayout({
                                    }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
-      <html lang="en" data-theme={"cupcake"}>
+      <html lang="en" suppressHydrationWarning={true}>
 
-      <body className={inter.className + ' flex flex-col min-h-fit justify-center content-center items-center'}>
 
-      <div className={"lg:w-3xl max-w-full flex flex-col items-center justify-center"}>
-        <NavBar/>
-        {children}
-      </div>
-      <footer className={inter.className + ' flex flex-col items-center justify-center my-8'}>
-        Made with ❤️from Steven
-      </footer>
-      </body>
+        <body className={inter.className + ' flex flex-col min-h-fit justify-center content-center items-center'}>
+        <ThemeProvider>
+        <div className={"lg:w-3xl max-w-full flex flex-col items-center justify-center"}>
+          <NavBar/>
+          {children}
+        </div>
+        <footer className={inter.className + ' flex flex-col items-center justify-center my-8'}>
+          Made with ❤️ from Steven
+        </footer>
+        </ThemeProvider>
+        </body>
+
+
       </html>
   )
 }
