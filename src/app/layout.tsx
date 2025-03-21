@@ -4,6 +4,7 @@ import './globals.css';
 import NavBar from '@/components/NavBar';
 import React from 'react';
 import {ThemeProvider} from "next-themes";
+import {Analytics} from "@vercel/analytics/next"
 
 const inter = Inter({subsets: ['latin']});
 
@@ -32,6 +33,7 @@ export default function RootLayout({
           Made with ❤️ from Steven
         </footer>
         </ThemeProvider>
+        <Analytics/>
         </body>
 
 
