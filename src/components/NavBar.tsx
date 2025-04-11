@@ -35,7 +35,7 @@ export default function NavBar(props: React.PropsWithChildren, ) {
               ))}
             </ul>
           </div>
-          <Link href={"/"}><h4>Steven Bui</h4></Link>
+          <Link href={"/"}><h4>Halley Dao</h4></Link>
         </div>
         <div className="navbar-center hidden md:flex">
           <ul className="menu menu-horizontal px-1">
@@ -48,7 +48,7 @@ export default function NavBar(props: React.PropsWithChildren, ) {
           <label className="swap swap-rotate">
           {/* this hidden checkbox controls the state */}
           <input type="checkbox" className={"theme-controller"} value={"dark"} onChange={e =>
-            e.target.checked ? setTheme("dark") : setTheme("cupcake")
+            e.target.checked ? setTheme("synthwave") : setTheme("pastel")
           }/>
 
           {/* sun icon */}

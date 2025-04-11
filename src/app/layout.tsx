@@ -9,7 +9,7 @@ import {Analytics} from "@vercel/analytics/next"
 const inter = Inter({subsets: ['latin']});
 
 export const metadata: Metadata = {
-  title: "Steven's Portfolio",
+  title: "Halley's Portfolio",
   description: 'A digital portfolio :)',
 };
 
@@ -30,7 +30,7 @@ export default function RootLayout({
           {children}
         </div>
         <footer className={inter.className + ' flex flex-col items-center justify-center my-8'}>
-          Made with ❤️ from Steven
+          Made with ❤️ from Halley
         </footer>
         </ThemeProvider>
         <Analytics/>
