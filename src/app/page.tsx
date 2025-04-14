@@ -125,60 +125,66 @@ function Experience() {
 function ProjectOverview() {
   const renderProjects = () => {
     return (
-        <div className={"project-content grid grid-cols-1 md:grid-cols-2 gap-8"}>
-          {Projects.map((project) => (
-              <Link  href={`/projects/#${project.id}`} className="no-underline card bg-base-100 w-82 max-w-full shadow-sm card-border prose prose-headings:my-3" key={project.id}>
-                <Carousel className={"w-full p-0 m-0"}>
-                  <CarouselContent>
-                    {project.thumbnail.map((pic, index) => (
-                        <CarouselItem className="w-full" key={pic} id={(project.id + index).toString()}>
-                          <Image
-                              src={pic}
-                              alt="Thumbnail"
-                              className="rounded-xl mt-0 mb-0 object-cover object-top h-[150px]"
-                              width={400}
-                              height={200}/>
-                        </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  {project.thumbnail.length > 1 && (
-                      <CarouselPrevious/>
+      <div className="project-content grid grid-cols-1 md:grid-cols-2 gap-8">
+        {Projects.map((project) => (
+          <Link
+            href={`/projects/#${project.id}`}
+            className="no-underline card bg-base-100 w-82 max-w-full shadow-sm card-border prose prose-headings:my-3"
+            key={project.id}
+          >
+            <Carousel className="w-full p-0 m-0">
+              <CarouselContent>
+                {project.thumbnail.map((media, index) => (
+                  <CarouselItem className="w-full" key={media} id={(project.id + index).toString()}>
+                    {media.endsWith('.mp4') || media.endsWith('.webm') || media.endsWith('.ogg') ? (
+                      <video
+                        className="rounded-xl mt-0 mb-0 object-cover object-top h-[150px] w-full"
+                        controls
+                      >
+                        <source src={media} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    ) : (
+                      <Image
+                        src={media}
+                        alt="Thumbnail"
+                        className="rounded-xl mt-0 mb-0 object-cover object-top h-[150px]"
+                        width={400}
+                        height={200}
+                      />
+                    )}
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
 
-                  )
+              {project.thumbnail.length > 1 && <CarouselPrevious />}
+              {project.thumbnail.length > 1 && <CarouselNext />}
+            </Carousel>
 
-                  }
-                  {project.thumbnail.length > 1 && (
-                      <CarouselNext/>
-
-                  )
-
-                  }
-                </Carousel>
-                  <div className="card-body items-center text-center">
-                    <h2 className="card-title">{project.name}</h2>
-                    <p>{project.description}</p>
-                    <div className="card-actions justify-center">
-                      {project.technologies.map((technology) => (
-                          <div className="badge badge-outline"
-                               key={project.name + project.technologies}>{technology}</div>
-                      ))}
-
-                    </div>
+            <div className="card-body items-center text-center">
+              <h2 className="card-title">{project.name}</h2>
+              <p>{project.description}</p>
+              <div className="card-actions justify-center">
+                {project.technologies.map((technology) => (
+                  <div className="badge badge-outline" key={project.name + technology}>
+                    {technology}
                   </div>
-              </Link>
+                ))}
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+    );
+  };
 
-            ))
-          }
-        </div>
-    )
-  }
   return (
-    <section className={"f"}>
+    <section className="f">
       <h1>Featured Projects</h1>
       {renderProjects()}
     </section>
-  )
-  }
+  );
+}
 
   function Education() {
     return (

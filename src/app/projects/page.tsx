@@ -45,69 +45,98 @@ const Tableau =() => {
   />
   )
 };
-const ProjectCard = ({id, image, title, description, achievements, technologies, links}: IProjectCardProps) => {
+interface IProjectCardProps {
+  id: string | number;
+  image: string[]; // URLs (images or videos)
+  title: string;
+  description: string;
+  achievements: string[];
+  technologies: string[];
+  links: { source: string; link: string }[];
+}
 
+const ProjectCard = ({
+  id,
+  image,
+  title,
+  description,
+  achievements,
+  technologies,
+  links,
+}: IProjectCardProps) => {
   return (
-      <div className="card bg-base-100 shadow-sm card-border mb-8" id={id.toString()}>
-        <Carousel className={"w-full flex items-center justify-center"}>
-          <CarouselContent className={"w-full p-0 m-0"}>
-
-            {image.map((pic, index) => (
-                <CarouselItem className="w-full flex justify-center items-center m-0 p-0" key={pic} id={(index).toString()}>
-                  <Image
-                      src={pic}
-                      alt="Thumbnail"
-                      className="rounded-xl w-full h-full"
-
-                      width={400}
+    <div className="card bg-base-100 shadow-sm card-border mb-8" id={id.toString()}>
+      <Carousel className="w-full flex items-center justify-center">
+        <CarouselContent className="w-full p-0 m-0">
+          {image.map((media, index) => (
+            <CarouselItem
+              className="w-full flex justify-center items-center m-0 p-0"
+              key={`${id}-media-${index}`}
+              id={`${index}`}
+            >
+              {media.endsWith('.mp4') || media.endsWith('.webm') || media.endsWith('.ogg') ? (
+                <video
+                  className="rounded-xl w-full h-full object-cover"
+                  controls
+                >
+                  <source src={media} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <Image
+                  src={media}
+                  alt="Thumbnail"
+                  className="rounded-xl w-full h-full object-cover"
+                  width={400}
                   height={200}
-                  quality={80}/>
-                </CarouselItem>
-            ))}
-          </CarouselContent>
-          {image.length > 1 && (
-              <CarouselPrevious/>
+                  quality={80}
+                />
+              )}
+            </CarouselItem>
+          ))}
+        </CarouselContent>
 
-          )
+        {image.length > 1 && <CarouselPrevious />}
+        {image.length > 1 && <CarouselNext />}
+      </Carousel>
 
-          }
-          {image.length > 1 && (
-              <CarouselNext/>
+      <div className="card-body">
+        <h2 className="card-title">{title}</h2>
+        <p>{description}</p>
 
-          )
+        <ul className="list-disc list-inside my-2">
+          {achievements.map((achievement) => (
+            <li key={`${title}-achievement-${achievement}`}>{achievement}</li>
+          ))}
+        </ul>
 
-          }
-        </Carousel>
-        <div className="card-body">
-          <h2 className="card-title">{title}</h2>
-          <p>{description}</p>
-          <ul>
-            {achievements.map((achievement) => (
-                <li key={achievement}>{achievement}</li>
-            ))}
-          </ul>
-          <div className="flex justify-center gap-2 w-full flex-wrap">
-            {technologies.map((technology) => (
-                <div className="badge badge-outline"
-                     key={title + technology}>{technology}</div>
-            ))}
-          </div>
+        <div className="flex justify-center gap-2 w-full flex-wrap mt-2">
+          {technologies.map((technology) => (
+            <div className="badge badge-outline" key={`${title}-${technology}`}>
+              {technology}
+            </div>
+          ))}
+        </div>
 
-          <div className="card-actions justify-center mt-2">
-            {links.map((link, index) => (
-                <a href={link.link} className={"btn no-underline"} key={link.link}>
-                  {link.source == "Github" && <FaGithub />}
-                  {link.source == "Tableau" &&
-                      <Tableau/>}
-                </a>
-            ))}
-
-          </div>
+        <div className="card-actions justify-center mt-4">
+          {links.map((link) => (
+            <a
+              href={link.link}
+              className="btn no-underline"
+              key={`${title}-${link.source}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {link.source === 'Github' && <FaGithub />}
+              {link.source === 'Tableau' && <Tableau />}
+              <span className="ml-2">{link.source}</span>
+            </a>
+          ))}
         </div>
       </div>
+    </div>
   );
 };
-
 
 const ProjectsPage = () => {
   return (

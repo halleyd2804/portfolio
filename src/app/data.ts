@@ -20,7 +20,7 @@ export const Projects: ProjectSchema[] = [
         "Developed the UI for the web app using HTML, CSS, React and Javascript",
         "Streamlined onboarding and medical items recognition processes for a medium-sized non-for-profit" +
         " organisation"],
-    thumbnail: ["/ProjectAssets/MedicalPantry.png"],
+    thumbnail: ["/ProjectAssets/demo.mp4", "/ProjectAssets/image.png"],
     links:[{
       link: "https://github.com/wfltaylor/IT-Project-Team-58",
       source: "Github"
