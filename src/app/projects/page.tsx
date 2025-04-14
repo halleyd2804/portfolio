@@ -45,15 +45,6 @@ const Tableau =() => {
   />
   )
 };
-interface IProjectCardProps {
-  id: string | number;
-  image: string[]; // URLs (images or videos)
-  title: string;
-  description: string;
-  achievements: string[];
-  technologies: string[];
-  links: { source: string; link: string }[];
-}
 
 const ProjectCard = ({
   id,
