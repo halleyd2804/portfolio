@@ -17,9 +17,7 @@ export const Projects: ProjectSchema[] = [
     description: "An admin portal and item-matching engine to manage medical supplies and identify products using fuzzy matching of scanned text and barcodes.",
     achievements: ["Applied AGILE methodologies with Jira and Confluence to manage projects, issues, and tasks",
         "Developed a fuzzy matching indexing system in JavaScript, leveraging tokens derived from scanned text and barcodes with enhanced weighting for barcodes, achieving 80% accuracy in matching data with items in our MongoDB database",
-        "Developed the UI for the web app using HTML, CSS, React and Javascript",
-        "Streamlined onboarding and medical items recognition processes for a medium-sized non-for-profit" +
-        " organisation"],
+        "Developed the UI for the web app using HTML, CSS, React and Javascript"],
     thumbnail: ["/ProjectAssets/demo.mp4", "/ProjectAssets/image.png"],
     links:[{
       link: "https://github.com/wfltaylor/IT-Project-Team-58",
