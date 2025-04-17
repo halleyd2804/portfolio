@@ -18,7 +18,7 @@ export const Projects: ProjectSchema[] = [
     achievements: ["Applied AGILE methodologies with Jira and Confluence to manage projects, issues, and tasks",
         "Collaborated on a fuzzy matching indexing system in JavaScript, leveraging tokens from scanned text and barcodes with enhanced weighting for barcodes, achieving 80% matching accuracy in MongoDB",
         "Developed the UI for the web app using HTML, CSS, React and Javascript"],
-    thumbnail: ["/ProjectAssets/demo.mp4", "/ProjectAssets/image.png"],
+    thumbnail: ["/ProjectAssets/demo.mp4"],
     links:[{
       link: "https://github.com/wfltaylor/IT-Project-Team-58",
       source: "Github"
@@ -88,5 +88,19 @@ export const Projects: ProjectSchema[] = [
   source: "Tableau"
 }],
   technologies: ["SQL(MySQL)", "Tableau", "Pandas"],
+},
+{
+  id: 6,
+  name: "Fraud Detection",
+  description: "A fraud detection system using machine learning models, including Logistic Regression and Neural Networks to predict fraudulent transactions based on various features",
+  achievements: ["Constructed Logistic Regression models in statsmodels and Neural Networks in TensorFlow, applying advanced feature engineering with Pandas to improve prediction accuracy",
+                  "Attained an AUC score of 0.81 for the Neural Network model and optimized prediction accuracy through model evaluation"],
+  thumbnail: ['/ProjectAssets/FD.jpeg'],
+  
+  links:[{
+    link: "https://github.com/halleyd2804/Fraud-Detection",
+    source: "Github"
+  }],
+  technologies: ["statsmodels", "TensorFlow", "Pandas", "Matplotlib"],
 }
 ]

@@ -79,7 +79,7 @@ function Experience() {
                 Transformed data files from H5 format to RDS format for enhanced compatibility and streamlined direct data retrieval in R, increasing efficiency in data processing and boosting website speed by 20%, while reducing reliance on Python data transfersefficiency
                 </li>
                 <li>
-                Leveraged Microsoft Excel and SharePoint for effective collaboration, team communication, ensuring accurate data presentations and improving workflow integration
+                Leveraged Excel and SharePoint for effective collaboration, team communication, ensuring accurate data presentations and improving workflow integration
                 </li>
 
               </ul>
@@ -96,7 +96,7 @@ function Experience() {
                 Utilized Tableau (including Level of Detail (LOD) expressions, calculation fields, table calculations, parameters, and data blending) to design interactive, dynamic visualisations
                 </li>
                 <li>
-                Cleaned and pre-processed data using Excel to ensure accuracy and consistency, streamlining analysis and improving overall quality of visualisations and insights
+                Cleaned and pre-processed over 100,000 data records using Excel to ensure accuracy and consistency, streamlining analysis and improving overall quality of visualisations and insights
                 </li>
               </ul>
             </div>
