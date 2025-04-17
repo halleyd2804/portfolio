@@ -207,21 +207,21 @@ function ProjectOverview() {
       <h1>Technical Skills</h1>
       <ul className="text-base text-base-content opacity-100">
     <li>
-      <span className="font-semibold text-neutral ">💻 Programming & Development:</span><br />
-      Python(NumPy, Pandas, Matplotlib, Scikit-learn, NLTK, Beautiful Soup, regex), 
-      R, JavaScript, HTML, CSS, SQL, MATLAB, Git, GitHub, Jupyter Notebook, VSCode, RStudio, Nectar
+      <span className="font-semibold ">💻 Programming & Development:</span><br />
+      Python(NumPy, Pandas, Matplotlib, Scikit-learn, statsmodels, NLTK, Beautiful Soup, regex), 
+      R, JavaScript, HTML, CSS, SQL, Jupyter Notebook, VSCode, RStudio, Nectar
     </li>
 
     <li>
-      <span className="font-semibold text-neutral">📊 Data Science & Databases:</span><br />
+      <span className="font-semibold">📊 Data Science & Databases:</span><br />
       Machine Learning, Data Modelling, Data Mining, Querying, EDA, 
       Excel (Cleaning, Analysis, Viz), Tableau, MySQL, PostgreSQL, MongoDB, 
       NLP (Prompt Engineering, Normalization, Info Extraction), Canva
     </li>
 
     <li>
-      <span className="font-semibold text-neutral">🤝 Collaboration & Tools:</span><br />
-      Agile (Jira, Confluence), SharePoint, Project Management, Documentation, Version Control
+      <span className="font-semibold">🤝 Collaboration & Tools:</span><br />
+      Agile (Jira, Confluence), SharePoint, Project Management, Documentation, Version Control (Git, GitHub)
     </li>
   </ul>
     </section>
