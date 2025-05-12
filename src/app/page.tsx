@@ -62,9 +62,9 @@ function LandingSection({router}: {router: any}) {
 
 function Experience() {
   return (
-      <section className={"my-8 prose prose-headings:mt-3"}>
+      <section className={"my-1 prose prose-headings:mt-1"}>
         <h1>Experience</h1>
-        <ul className={"timeline timeline-vertical timeline-compact gap-3 pl-0"}>
+        <ul className={"timeline timeline-vertical timeline-compact gap-1 pl-0"}>
           <li>
             <div className="timeline-end timeline-box experience-content">
               <h3>
