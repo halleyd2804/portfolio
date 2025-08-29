@@ -102,5 +102,20 @@ export const Projects: ProjectSchema[] = [
     source: "Github"
   }],
   technologies: ["statsmodels", "TensorFlow", "Pandas", "Matplotlib"],
+},
+{
+  id: 7,
+  name: "Employee Turnover and Attrition Analysis",
+  description: "A Power BI dashboard to uncover attrition drivers and highlight high-risk employee groups, supporting HR retention strategies.",
+  achievements: ["Identified employee groups with up to 2 times higher attrition risk by analysing patterns across demographics, job satisfaction, work-life balance, and overtime",
+"Developed a Power BI dashboard that enabled HR leaders to compare attrition trends between departments, job levels, and employee segments",
+"Provided actionable insights on improving employee engagement and retention through better recognition, balanced workloads, and enhanced work-life support"],
+  thumbnail: ['public/ProjectAssets/image copy.png'],
+  
+  links:[{
+    link: "https://github.com/halleyd2804/Employee-Attrition-Analysis",
+    source: "Github"
+  }],
+  technologies: ["Power BI"],
 }
 ]

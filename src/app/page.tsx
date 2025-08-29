@@ -34,7 +34,7 @@ function LandingSection({router}: {router: any}) {
           </div>
           <div className="flex flex-row gap-3 flex-wrap">
             <button
-              onClick={() => router.push("/ProjectAssets/Halley_Dao_CV.pdf")}
+              onClick={() => router.push("/ProjectAssets/Halley_Dao_CV_DA.pdf")}
               className="btn btn-neutral text-neutral-content"
             >
               Resume <DownloadIcon />
@@ -207,15 +207,15 @@ function ProjectOverview() {
       <h1>Technical Skills</h1>
       <ul className="text-base text-base-content opacity-100">
     <li>
-      <span className="font-semibold ">💻 Programming & Development:</span><br />
+      <span className="font-semibold "> Programming & Development:</span><br />
       Python(NumPy, Pandas, Matplotlib, Scikit-learn, statsmodels, NLTK, Beautiful Soup, regex), 
       R, JavaScript, HTML, CSS, SQL, Jupyter Notebook, VSCode, RStudio, Nectar
     </li>
 
     <li>
-      <span className="font-semibold">📊 Data Science & Databases:</span><br />
+      <span className="font-semibold"> Data Science & Databases:</span><br />
       Machine Learning, Data Modelling, Data Mining, Querying, EDA, 
-      Excel (Cleaning, Analysis, Viz), Tableau, MySQL, PostgreSQL, MongoDB, 
+      Excel (Cleaning, Analysis, Viz), Tableau, Power BI, MySQL, PostgreSQL, MongoDB, 
       NLP (Prompt Engineering, Normalization, Info Extraction), Canva
     </li>
 
